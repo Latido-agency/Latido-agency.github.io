@@ -1,0 +1,852 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Latido Agency | Talento para lives y contenido</title>
+<meta name="description" content="Agencia de talento joven. Modelos y presentadores para lives de venta, sesiones de fotos y contenido para negocios.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Latido Agency">
+<meta property="og:description" content="Talento joven para lives de venta, sesiones de fotos y contenido de marca.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_LA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230D0A0B'/%3E%3Cpath d='M3 17h7l3-8 5 15 3-7h8' fill='none' stroke='%23FF5B4F' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D0A0B;
+  --graphite:#1A1416;
+  --coral:#FF5B4F;
+  --coral-soft:#FF8A7C;
+  --blush:#FFF1EE;
+  --muted:#B3A5A3;
+  --radius:20px;
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--blush);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--coral-soft);outline-offset:3px;border-radius:6px}
+
+/* Navegación */
+.topbar{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 20px;background:linear-gradient(var(--ink),transparent)}
+.topbar nav{display:flex;gap:18px;align-items:center;font-size:.95rem}
+.topbar nav a{text-decoration:none;display:none}
+.topbar nav .nav-cta{display:inline-block;background:var(--coral);color:var(--ink);padding:8px 16px;border-radius:99px;font-weight:600}
+.brand{display:inline-flex;align-items:center;gap:10px;font:800 1.35rem var(--display);text-decoration:none;letter-spacing:-.02em}
+.brand-dot{width:12px;height:12px;border-radius:50%;background:var(--coral);animation:beat 1.2s infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.5)}30%{transform:scale(1)}45%{transform:scale(1.3)}}
+
+/* Botones */
+.btn{display:inline-block;border:2px solid var(--coral);border-radius:99px;padding:14px 28px;font:600 1rem var(--body);text-decoration:none;cursor:pointer;transition:transform .2s,background .2s,color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--coral);color:var(--ink)}
+.btn-primary:hover{background:var(--coral-soft);border-color:var(--coral-soft)}
+.btn-ghost{background:transparent;color:var(--blush)}
+.btn-ghost:hover{background:var(--coral);color:var(--ink)}
+
+/* Portada */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:96px 20px 72px;overflow:hidden}
+#ecg{display:block;flex:none;position:relative;width:calc(100% + 40px);margin:28px -20px 0;height:clamp(90px,15vh,140px);pointer-events:none}
+.hero-inner{position:relative;max-width:900px;margin-block:auto;padding-top:8px}
+.hero-kicker{color:var(--coral-soft);font-weight:500;margin-bottom:16px}
+.hero h1{font:800 clamp(2.6rem,10.5vw,6.6rem)/.98 var(--display);letter-spacing:-.04em;font-variation-settings:"opsz" 96;margin-bottom:22px}
+.hero-sub{max-width:34rem;color:var(--muted);font-size:1.1rem;margin-bottom:30px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+.bpm{position:absolute;right:20px;bottom:20px;color:var(--muted);font-size:.85rem}
+.bpm span{color:var(--coral);font:700 1.3rem var(--display)}
+
+
+/* Acordeón de servicios: una sección abierta a la vez */
+.svc{max-width:1180px;margin:0 auto;padding:88px 20px 40px}
+.acc{border-bottom:1px solid #2a2123}
+.acc-item{border-top:1px solid #2a2123}
+.acc-item h3{font:inherit}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;background:none;border:0;padding:8px 0;cursor:pointer;text-align:left;font:800 clamp(2.4rem,9.5vw,6.2rem)/1.12 var(--display);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #5a4a4c;transition:color .45s,-webkit-text-stroke-color .45s}
+.acc-btn span{position:relative;display:block;padding-left:38px;transition:transform .45s}
+.acc-btn span::before{content:"";position:absolute;left:0;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;background:var(--coral);transform:scale(0);transition:transform .45s}
+@media (hover:hover){.acc-btn:hover{color:var(--blush);-webkit-text-stroke-color:var(--blush)}}
+.acc-item.on .acc-btn,.acc-item.open .acc-btn{color:var(--coral);-webkit-text-stroke-color:var(--coral)}
+.acc-item.on .acc-btn span,.acc-item.open .acc-btn span{transform:translateX(10px)}
+.acc-item.on .acc-btn span::before,.acc-item.open .acc-btn span::before{transform:scale(1);animation:beat 1.2s infinite}
+.acc-ico{flex:none;position:relative;width:34px;height:34px;border-radius:50%;border:2px solid var(--coral);transition:transform .35s,background .35s}
+.acc-ico::before,.acc-ico::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2px;margin:-1px 0 0 -7px;background:var(--coral);transition:background .35s}
+.acc-ico::after{transform:rotate(90deg)}
+.acc-item.open .acc-ico{transform:rotate(45deg);background:var(--coral)}
+.acc-item.open .acc-ico::before,.acc-item.open .acc-ico::after{background:var(--ink)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s ease}
+.acc-item.open .acc-panel{grid-template-rows:1fr}
+.acc-inner{overflow:hidden}
+.acc-cols{display:grid;gap:22px;padding:6px 0 30px}
+.acc-cols h4{font:700 1.05rem var(--display);color:var(--coral-soft);margin-bottom:6px}
+.acc-cols p{color:var(--blush);max-width:34ch}
+.for{margin-top:20px;color:var(--muted);max-width:60ch}
+.for strong{color:var(--blush)}
+@media (min-width:800px){.acc-cols{grid-template-columns:repeat(3,1fr);gap:36px}.svc{padding-inline:48px}}
+
+/* Secciones */
+.section{padding:88px 20px;max-width:1180px;margin:0 auto}
+.section-title{font:800 clamp(1.9rem,6vw,3.4rem)/1.05 var(--display);letter-spacing:-.03em;margin-bottom:36px;max-width:18ch}
+.section-dark{max-width:none;background:var(--graphite);padding-inline:max(20px,calc((100vw - 1180px)/2))}
+
+.two-col{display:grid;gap:20px}
+.panel{background:var(--graphite);border-radius:var(--radius);padding:28px;border:1px solid #2a2123}
+.panel-alt{background:var(--blush);color:var(--ink);border-color:var(--blush)}
+.panel h3{font:700 1.5rem var(--display);margin-bottom:18px}
+.steps{padding-left:1.2rem;margin-bottom:26px;display:grid;gap:12px}
+.steps li::marker{color:var(--coral);font-weight:700}
+.panel-alt .btn-ghost{color:var(--ink)}
+
+
+/* Talento */
+.scout{display:grid;gap:44px;align-items:center}
+.checks{list-style:none;padding:0;display:grid;gap:12px;margin-bottom:28px}
+.checks li{padding-left:30px;position:relative}
+.checks li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:14px;border-radius:50%;background:var(--coral)}
+.cards{position:relative;height:380px}
+.pcard{position:absolute;width:56%;aspect-ratio:3/4;border-radius:var(--radius);overflow:hidden;background:var(--graphite);transition:transform .15s ease-out;will-change:transform}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.pcard figcaption{position:absolute;inset:auto 0 0 0;padding:34px 14px 12px;background:linear-gradient(transparent,rgba(13,10,11,.82));color:var(--blush);font-weight:600;display:flex;flex-direction:column}
+.oferta{max-width:460px;width:calc(100% - 32px);margin:auto;padding-right:56px;text-align:left}
+.oferta .kicker{color:var(--coral-text);font-weight:600;margin-bottom:6px}
+.oferta h2{font:800 1.7rem/1.1 var(--display);margin-bottom:12px}
+.oferta .actions{display:flex;flex-wrap:wrap;gap:10px}
+.oferta .x{position:absolute;top:10px;right:10px;width:40px;height:40px;border-radius:50%;border:0;background:var(--soft);color:var(--fg);font-size:1.4rem;line-height:1;cursor:pointer}
+.pcard small{font-weight:400;opacity:.8;font-size:.75rem}
+.c1{left:0;top:0}
+.c2{right:0;top:36px}
+.c3{left:22%;top:150px}
+
+/* Formularios */
+.section-form{max-width:640px}
+.tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--graphite);padding:6px;border-radius:99px}
+.tabs button{flex:1;border:0;border-radius:99px;padding:12px;font:600 1rem var(--body);background:transparent;color:var(--muted);cursor:pointer;transition:background .2s,color .2s}
+.tabs button[aria-selected="true"]{background:var(--coral);color:var(--ink)}
+.form{display:grid;gap:16px}
+.form[hidden]{display:none}
+.form label{display:grid;gap:6px;font-weight:500}
+.opt{color:var(--muted);font-weight:400}
+.form input[type=text],.form input[type=tel],.form select{width:100%;padding:14px 16px;border-radius:14px;border:2px solid #302528;background:var(--graphite);color:var(--blush);font:400 1rem var(--body)}
+.form input:focus,.form select:focus{outline:none;border-color:var(--coral)}
+.form .check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.92rem;color:var(--muted)}
+.form .check input{margin-top:4px;accent-color:var(--coral);width:18px;height:18px;flex:none}
+.form .invalid{border-color:#ff3b3b!important}
+.trap{position:absolute!important;left:-9999px;opacity:0;height:0;width:0}
+.form-msg{min-height:1.4em;font-weight:500}
+.form-msg.ok{color:#7be0a5}.form-msg.err{color:var(--coral-soft)}
+
+/* Pie y diálogo */
+.footer{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;justify-content:space-between;padding:32px 20px;border-top:1px solid #2a2123;color:var(--muted);font-size:.9rem}
+.link-btn{background:none;border:0;color:var(--blush);text-decoration:underline;cursor:pointer;font:inherit}
+dialog{border:0;border-radius:var(--radius);padding:28px;max-width:440px;background:var(--graphite);color:var(--blush)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+dialog h2{font:700 1.4rem var(--display);margin-bottom:12px}
+dialog p{margin-bottom:20px;color:var(--muted)}
+
+/* Escritorio */
+@media (min-width:800px){
+  .topbar{padding:18px 48px}
+  .topbar nav a{display:inline}
+  .hero{padding:120px 48px 80px}
+  #ecg{width:calc(100% + 96px);margin-inline:-48px}
+  .bpm{right:48px}
+  .two-col{grid-template-columns:1fr 1fr}
+  .scout{grid-template-columns:1.1fr 1fr}
+  .cards{height:480px}
+  .pcard{width:50%}
+  .c3{top:210px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .brand-dot,.acc-item.on .acc-btn span::before,.acc-item.open .acc-btn span::before{animation:none}
+  .btn,.pcard,.acc-panel,.acc-ico,.acc-btn,.acc-btn span,.acc-btn span::before{transition:none}
+  .acc-btn{color:var(--coral);-webkit-text-stroke-color:var(--coral)}
+  .acc-btn span::before{transform:scale(1)}
+}
+
+/* Landing de venta */
+.hero-trust{margin-top:22px;color:var(--muted);font-size:.92rem;max-width:44rem}
+.hero-trust a{color:var(--coral-soft)}
+.problem .section-title{max-width:22ch}
+.pains{list-style:none;padding:0;display:grid;gap:18px;margin-bottom:34px}
+.pains li{padding:4px 0 4px 20px;border-left:4px solid var(--coral)}
+.pains h3{font:700 1.3rem var(--display);margin-bottom:4px}
+.pains p{color:var(--muted);max-width:46ch}
+.pivot{font:700 clamp(1.3rem,4vw,2rem)/1.2 var(--display);letter-spacing:-.02em;color:var(--coral-soft);max-width:30ch}
+.benefits{list-style:none;padding:0;display:grid;gap:0;margin-bottom:34px}
+.benefits li{padding:20px 0 20px 30px;border-top:1px solid #2a2123;position:relative}
+.benefits li::before{content:"";position:absolute;left:0;top:30px;width:14px;height:14px;border-radius:50%;background:var(--coral)}
+.benefits h3{font:700 1.3rem var(--display);margin-bottom:4px}
+.benefits p{color:var(--muted);max-width:40ch}
+.section-band{background:var(--graphite);padding:72px 20px}
+.band-inner{max-width:1180px;margin:0 auto}
+.checks.cols2{margin-bottom:0}
+.faq-cols{display:grid;gap:36px}
+.faq h3{font:700 1.3rem var(--display);color:var(--coral-soft);margin-bottom:12px}
+.faq details{border-top:1px solid #2a2123;padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--coral);font-size:1.4rem;line-height:1;transition:transform .25s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin-top:8px;color:var(--muted);max-width:52ch}
+.cta-band{text-align:left;padding:88px 20px;background:var(--coral);color:var(--ink)}
+.cta-band h2{font:800 clamp(1.9rem,6vw,3.4rem)/1.05 var(--display);letter-spacing:-.03em;margin:0 auto 28px;max-width:1180px}
+.cta-band .hero-actions{max-width:1180px;margin:0 auto}
+.cta-band .btn-primary{background:var(--ink);border-color:var(--ink);color:var(--blush)}
+.cta-band .btn-primary:hover{background:#2a1e20;border-color:#2a1e20}
+.cta-band .btn-ghost{border-color:var(--ink);color:var(--ink)}
+.cta-band .btn-ghost:hover{background:var(--ink);color:var(--blush)}
+.sticky-bar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(13,10,11,.94);border-top:1px solid #2a2123;transform:translateY(110%);transition:transform .3s}
+.sticky-bar.visible{transform:none}
+.sticky-bar .btn{flex:1;padding:12px 10px;text-align:center}
+body{padding-bottom:0}
+@media (min-width:800px){
+  .benefits{grid-template-columns:1fr 1fr;column-gap:56px}
+  .checks.cols2{grid-template-columns:1fr 1fr;column-gap:56px}
+  .faq-cols{grid-template-columns:1fr 1fr;gap:56px}
+  .section-band,.cta-band{padding-inline:48px}
+  .sticky-bar{display:none}
+}
+@media (prefers-reduced-motion:reduce){.sticky-bar,.faq summary::after{transition:none}}
+
+/* ===== Tema claro: fondo blanco y texto negro. Franjas oscuras y coral sin cambios ===== */
+:root{--fg:#0D0A0B;--line:#E7DEDB;--soft:#F6F1EF;--text-2:#4F4244;--coral-text:#C8301F;--coral-big:#E8432F}
+body{background:#fff;color:var(--fg)}
+:focus-visible{outline-color:var(--coral-text)}
+.topbar{background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.btn-ghost{color:var(--fg)}
+.btn-ghost:hover{background:var(--coral);color:var(--ink)}
+.hero-kicker{color:var(--coral-text)}
+.hero-sub,.hero-trust,.bpm{color:var(--text-2)}
+.hero-trust a,.bpm span{color:var(--coral-text)}
+.acc{border-bottom-color:var(--line)}
+.acc-item{border-top-color:var(--line)}
+.acc-btn{-webkit-text-stroke-color:#BDAFAC}
+@media (hover:hover){.acc-btn:hover{color:var(--fg);-webkit-text-stroke-color:var(--fg)}}
+.acc-item.on .acc-btn,.acc-item.open .acc-btn{color:var(--coral-big);-webkit-text-stroke-color:var(--coral-big)}
+.acc-cols h4{color:var(--coral-text)}
+.acc-cols p,.for strong{color:var(--fg)}
+.for{color:var(--text-2)}
+.panel{background:var(--soft);border-color:var(--line)}
+.steps li::marker{color:var(--coral-text)}
+.panel-alt{background:var(--graphite);color:var(--blush);border-color:var(--graphite)}
+.panel-alt .steps li::marker{color:var(--coral)}
+.panel-alt .btn-ghost{color:var(--blush)}
+.panel-alt .btn-ghost:hover{color:var(--ink)}
+.tabs{background:var(--soft)}
+.tabs button{color:var(--text-2)}
+.opt{color:var(--text-2)}
+.form input[type=text],.form input[type=tel],.form select{background:#fff;border-color:#D9CCC9;color:var(--fg)}
+.form input:focus,.form select:focus{border-color:var(--coral-text)}
+.form .check{color:var(--text-2)}
+.form-msg.ok{color:#1A7F4B}
+.form-msg.err{color:var(--coral-text)}
+.footer{border-top-color:var(--line);color:var(--text-2)}
+.link-btn{color:var(--fg)}
+dialog{background:#fff;color:var(--fg)}
+dialog p{color:var(--text-2)}
+.pains p,.benefits p,.faq details p{color:var(--text-2)}
+.pivot,.faq h3,.faq summary::after{color:var(--coral-text)}
+.benefits li,.faq details{border-top-color:var(--line)}
+.section-band{color:var(--blush)}
+.sticky-bar .btn-ghost{color:var(--blush)}
+.sticky-bar .btn-ghost:hover{color:var(--ink)}
+
+/* Portada con modelo a la derecha: el texto nunca se cruza con ella */
+.hero{padding-bottom:0}
+.hero-model{display:block;align-self:flex-end;width:min(88vw,420px);height:auto;margin:10px -10px 0 auto;pointer-events:none;user-select:none}
+.bpm{position:static;margin-top:8px}
+@media (min-width:800px){
+  .hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);grid-template-rows:1fr auto auto;column-gap:24px;padding:100px 48px 0}
+  .hero-inner{grid-column:1;grid-row:1;align-self:center;margin-block:0}
+  #ecg{grid-column:1;grid-row:2;width:100%;margin:20px 0 0}
+  .bpm{grid-column:1;grid-row:3;margin:6px 0 28px}
+  .hero-model{grid-column:2;grid-row:1/span 3;align-self:end;justify-self:end;width:min(100%,600px);height:auto;max-height:86svh;object-fit:contain;object-position:bottom right;margin:0}
+  .hero h1{font-size:clamp(2.6rem,6.2vw,5.4rem)}
+}
+
+/* Etiquetas de las tarjetas arriba, para que no las tape la tarjeta de al frente */
+.pcard figcaption{inset:0 0 auto 0;padding:12px 14px 34px;background:linear-gradient(rgba(13,10,11,.78),transparent)}
+
+/* Foto tal cual: el fondo claro se funde con el blanco de la página (sin recorte, conserva el cabello natural) */
+.hero-model{mix-blend-mode:multiply;-webkit-mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 8%);mask-image:linear-gradient(to right,transparent,#000 8%,#000 92%,transparent),linear-gradient(to bottom,transparent,#000 8%);-webkit-mask-composite:source-in;mask-composite:intersect}
+
+/* ===== Portada a todo el ancho =====
+   Pantallas anchas (1100px+): la foto ocupa toda la portada y el texto va encima, a la izquierda.
+   Tableta y celular: el texto arriba y la foto a todo el ancho debajo. */
+.hero{position:relative;display:flex;flex-direction:column;justify-content:flex-start;min-height:100svh;padding:96px 20px 0;overflow:hidden;isolation:isolate}
+.hero-inner{align-self:flex-start;margin-block:0;max-width:none}
+#ecg{align-self:stretch}
+.bpm{align-self:flex-start}
+.hero-model{display:block;position:static;width:calc(100% + 40px);max-width:none;height:auto;aspect-ratio:1.15;object-fit:cover;object-position:right bottom;margin:12px -20px 0;mix-blend-mode:multiply;-webkit-mask-image:none;mask-image:none}
+.hero::after{display:none}
+@media (min-width:800px){
+  .hero{padding:110px 48px 0}
+  #ecg{width:100%;margin:20px 0 0}
+  .hero-model{width:calc(100% + 96px);margin:12px -48px 0;aspect-ratio:2}
+}
+@media (min-width:1100px){
+  .hero{justify-content:center;padding:110px 48px 56px}
+  .hero-model{position:absolute;inset:0;width:100%;height:100%;max-height:none;aspect-ratio:auto;margin:0;z-index:-1}
+  .hero::after{display:block;content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#fff 0%,#fff 28%,rgba(255,255,255,.65) 46%,rgba(255,255,255,0) 64%)}
+  .hero-inner{max-width:min(640px,50vw)}
+  #ecg{width:min(100%,42vw);align-self:flex-start}
+}
+
+</style>
+</head>
+<body>
+
+<header class="topbar" id="top">
+  <a class="brand" href="#top" aria-label="Latido Agency, inicio">
+    <span class="brand-dot" aria-hidden="true"></span>Latido
+  </a>
+  <nav aria-label="Principal">
+    <a href="#servicios">Qué hacemos</a>
+    <a href="#beneficios">Beneficios</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#preguntas">Preguntas</a>
+    <a class="nav-cta" href="#contacto" data-open-tab="talento">Postularme</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- 1. PORTADA (above the fold) -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-inner">
+    <p class="hero-kicker">Latido Agency</p>
+    <h1 id="hero-title">Talento que da vida a su marca.</h1>
+    <p class="hero-sub">Representamos a jóvenes mayores de 18 años para lives de venta, sesiones de fotos y contenido comercial. Usted pone el negocio; nosotros ponemos el rostro.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contacto" data-open-tab="talento">Soy talento</a>
+      <a class="btn btn-ghost" href="#contacto" data-open-tab="negocio">Tengo un negocio</a>
+    </div>
+    <p class="hero-trust">Talento mayor de 18 años · Contrato y autorización de imagen por escrito · <a href="#contacto" data-wa>Escribir por WhatsApp</a></p>
+  </div>
+  <canvas id="ecg" aria-hidden="true"></canvas>
+  <p class="bpm" aria-hidden="true"><span id="bpm">72</span> latidos por minuto</p>
+  <img class="hero-model" src="img/foto-1.webp" alt="Joven sonriente bailando, ejemplo de talento de la agencia" width="1704" height="974" fetchpriority="high">
+</section>
+
+<!-- 2. PROBLEMA -->
+<section class="section problem" id="problema" aria-labelledby="prob-title">
+  <h2 id="prob-title" class="section-title">Tener productos no basta: alguien tiene que presentarlos.</h2>
+  <ul class="pains">
+    <li><h3>Sus productos están, pero nadie los muestra.</h3><p>Un catálogo sin personas se ve frío. Un live sin presencia se siente vacío.</p></li>
+    <li><h3>Conseguir al talento correcto toma tiempo.</h3><p>Buscar, evaluar, coordinar y formalizar resta horas que su negocio necesita para vender.</p></li>
+    <li><h3>Trabajar sin papeles es un riesgo.</h3><p>Sin contrato ni autorización de imagen, ambas partes quedan expuestas.</p></li>
+  </ul>
+  <p class="pivot">Latido resuelve esa parte: usted pone el negocio; nosotros ponemos el rostro.</p>
+</section>
+
+<!-- 3. QUÉ HACEMOS (acordeón: una sección abierta a la vez) -->
+<section class="svc" id="servicios" aria-labelledby="svc-title">
+  <h2 id="svc-title" class="section-title">Qué hace nuestro talento.</h2>
+  <div class="acc">
+    <div class="acc-item open">
+      <h3><button class="acc-btn" id="acc-b1" type="button" aria-expanded="true" aria-controls="acc-p1"><span>Lives de venta</span><i class="acc-ico" aria-hidden="true"></i></button></h3>
+      <div class="acc-panel" id="acc-p1" role="region" aria-labelledby="acc-b1">
+        <div class="acc-inner"><div class="acc-cols">
+          <div><h4>En qué consiste</h4><p>Un talento presenta sus productos en vivo, en Instagram, TikTok, Facebook o la red que su negocio elija, y conversa con la audiencia.</p></div>
+          <div><h4>Qué se espera</h4><p>Que conozca el producto, siga el guion acordado con usted y responda con naturalidad a los comentarios.</p></div>
+          <div><h4>Qué obtiene su negocio</h4><p>Un rostro que representa a su marca frente al público y un canal de venta directo.</p></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <h3><button class="acc-btn" id="acc-b2" type="button" aria-expanded="false" aria-controls="acc-p2"><span>Presencia en vivo</span><i class="acc-ico" aria-hidden="true"></i></button></h3>
+      <div class="acc-panel" id="acc-p2" role="region" aria-labelledby="acc-b2" inert>
+        <div class="acc-inner"><div class="acc-cols">
+          <div><h4>En qué consiste</h4><p>Un talento acompaña su local o su transmisión: recibe, anima y mantiene el ritmo del momento.</p></div>
+          <div><h4>Qué se espera</h4><p>Buena actitud, puntualidad y fidelidad a la imagen de su marca.</p></div>
+          <div><h4>Qué obtiene su negocio</h4><p>Un ambiente más cercano para sus clientes y contenido con presencia humana.</p></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <h3><button class="acc-btn" id="acc-b3" type="button" aria-expanded="false" aria-controls="acc-p3"><span>Sesiones de fotos</span><i class="acc-ico" aria-hidden="true"></i></button></h3>
+      <div class="acc-panel" id="acc-p3" role="region" aria-labelledby="acc-b3" inert>
+        <div class="acc-inner"><div class="acc-cols">
+          <div><h4>En qué consiste</h4><p>Un talento posa para su catálogo, sus redes o su publicidad, junto a sus productos.</p></div>
+          <div><h4>Qué se espera</h4><p>Puntualidad, variedad de poses y cuidado del producto.</p></div>
+          <div><h4>Qué obtiene su negocio</h4><p>Imágenes con personas reales que muestran sus productos en uso.</p></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <h3><button class="acc-btn" id="acc-b4" type="button" aria-expanded="false" aria-controls="acc-p4"><span>Modelaje de prendas</span><i class="acc-ico" aria-hidden="true"></i></button></h3>
+      <div class="acc-panel" id="acc-p4" role="region" aria-labelledby="acc-b4" inert>
+        <div class="acc-inner"><div class="acc-cols">
+          <div><h4>En qué consiste</h4><p>Un talento viste sus prendas para mostrarlas como las vería su cliente, en fotografía o en vivo.</p></div>
+          <div><h4>Qué se espera</h4><p>Que presente cada prenda con naturalidad y respete el estilo de su marca.</p></div>
+          <div><h4>Qué obtiene su negocio</h4><p>Una forma clara de mostrar el corte, el caimiento y el estilo de cada prenda.</p></div>
+        </div></div>
+      </div>
+    </div>
+  </div>
+  <p class="for"><strong>Pensado para</strong> restaurantes, tiendas de ropa, tiendas de zapatos, joyerías y perfumerías.</p>
+  <p class="for">La producción (cámara, luz y edición) se define según el servicio y se acuerda con usted antes de comenzar.</p>
+</section>
+
+<!-- 4. BENEFICIOS -->
+<section class="section" id="beneficios" aria-labelledby="ben-title">
+  <h2 id="ben-title" class="section-title">Lo que gana su negocio con Latido.</h2>
+  <ul class="benefits">
+    <li><h3>Un rostro para su marca</h3><p>Una persona real que representa su imagen frente al público.</p></li>
+    <li><h3>Talento a su medida</h3><p>Le proponemos perfiles que van con el estilo de su negocio.</p></li>
+    <li><h3>Menos carga para usted</h3><p>Nos encargamos de coordinar al talento y formalizar el acuerdo.</p></li>
+    <li><h3>Contenido con personas reales</h3><p>Lives, fotos y prendas mostradas por quienes las usan y las presentan.</p></li>
+    <li><h3>Formatos flexibles</h3><p>Un live, una sesión o presencia en vivo: contrata lo que necesita, cuando lo necesita.</p></li>
+    <li><h3>Respaldo por escrito</h3><p>Contrato y autorización de imagen antes de cada proyecto.</p></li>
+  </ul>
+  <a class="btn btn-primary" href="#contacto" data-open-tab="negocio">Solicitar talento</a>
+</section>
+
+<!-- 5. CÓMO FUNCIONA -->
+<section class="section" id="como-funciona" aria-labelledby="como-title">
+  <h2 id="como-title" class="section-title">Dos caminos, un mismo latido.</h2>
+  <div class="two-col">
+    <article class="panel">
+      <h3>Si usted es talento</h3>
+      <ol class="steps">
+        <li><strong>Postúlese.</strong> Complete el formulario con sus datos y sus redes sociales.</li>
+        <li><strong>Entrevista.</strong> Conversamos con usted para conocerlo.</li>
+        <li><strong>Contrato.</strong> Firmamos contrato y autorización de imagen por escrito.</li>
+        <li><strong>Proyectos.</strong> Lo contactamos cuando un proyecto encaja con su perfil.</li>
+      </ol>
+      <a class="btn btn-primary" href="#contacto" data-open-tab="talento">Postularme</a>
+    </article>
+    <article class="panel panel-alt">
+      <h3>Si usted tiene un negocio</h3>
+      <ol class="steps">
+        <li><strong>Cuéntenos.</strong> Qué vende y qué necesita.</li>
+        <li><strong>Seleccionamos.</strong> Le proponemos el talento que va con su marca.</li>
+        <li><strong>Ejecutamos.</strong> Live, sesión de fotos o presencia en vivo, con la producción acordada según el servicio.</li>
+      </ol>
+      <a class="btn btn-ghost" href="#contacto" data-open-tab="negocio">Solicitar talento</a>
+    </article>
+  </div>
+</section>
+
+<!-- 6. COMPROMISOS -->
+<section class="section-band" aria-labelledby="gar-title">
+  <div class="band-inner">
+    <h2 id="gar-title" class="section-title">Nuestros compromisos, con ambas partes.</h2>
+    <ul class="checks cols2">
+      <li>Solo trabajamos con talento mayor de 18 años.</li>
+      <li>Contrato y autorización de imagen por escrito, antes de cualquier proyecto.</li>
+      <li>La representación del talento no es exclusiva.</li>
+      <li>No pedimos contraseñas ni datos sensibles en ningún formulario.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. PARA EL TALENTO -->
+<section class="section scout" aria-labelledby="scout-title">
+  <div class="scout-text">
+    <h2 id="scout-title" class="section-title">Usted sigue con su vida. Nosotros le conseguimos proyectos.</h2>
+    <ul class="checks">
+      <li>Solo mayores de 18 años.</li>
+      <li>Puede estudiar o trabajar: lo contactamos solo cuando hay un proyecto que encaja con usted.</li>
+      <li>La representación no es exclusiva.</li>
+      <li>Contrato y autorización de imagen por escrito, siempre.</li>
+    </ul>
+    <a class="btn btn-primary" href="#contacto" data-open-tab="talento">Postularme</a>
+  </div>
+  <div class="cards">
+    <figure class="pcard c1"><img src="img/foto-2.webp" alt="Joven sosteniendo un sándwich sobre una tabla de madera" width="600" height="800" loading="lazy"><figcaption>Restaurantes<small>Imagen de ejemplo</small></figcaption></figure>
+    <figure class="pcard c2"><img src="img/foto-3.webp" alt="Joven sonriente con una blusa terracota" width="600" height="800" loading="lazy"><figcaption>Tiendas de ropa<small>Imagen de ejemplo</small></figcaption></figure>
+    <figure class="pcard c3"><img src="img/foto-4.webp" alt="Joven probando un perfume en una perfumería" width="600" height="800" loading="lazy"><figcaption>Perfumerías<small>Imagen de ejemplo</small></figcaption></figure>
+  </div>
+</section>
+
+<!-- 8. PREGUNTAS FRECUENTES -->
+<section class="section faq" id="preguntas" aria-labelledby="faq-title">
+  <h2 id="faq-title" class="section-title">Preguntas frecuentes.</h2>
+  <div class="faq-cols">
+    <div>
+      <h3>Para negocios</h3>
+    <details><summary>¿Qué tipos de negocio pueden contratar talento?</summary><p>Restaurantes, tiendas de ropa, tiendas de zapatos, joyerías, perfumerías y otros negocios que necesiten mostrar su oferta con personas.</p></details>
+    <details><summary>¿Cuánto cuesta?</summary><p>Depende del servicio y del proyecto. Cuéntenos qué necesita y nos comunicaremos con usted.</p></details>
+    <details><summary>¿Quién pone la cámara, la luz y la edición?</summary><p>Se define según el servicio y se acuerda con usted antes de comenzar.</p></details>
+    <details><summary>¿En qué redes se hacen los lives?</summary><p>En Instagram, TikTok, Facebook o la red que su negocio elija.</p></details>
+    </div>
+    <div>
+      <h3>Para talento</h3>
+    <details><summary>¿Debo dejar mis estudios o mi trabajo?</summary><p>No. La representación no es exclusiva y lo contactamos solo cuando hay un proyecto que encaja con su perfil.</p></details>
+    <details><summary>¿Qué edad se necesita?</summary><p>Tener 18 años o más.</p></details>
+    <details><summary>¿Qué firmo?</summary><p>Un contrato y una autorización de imagen por escrito, antes de participar en cualquier proyecto.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 9. LLAMADO FINAL -->
+<section class="cta-band" aria-labelledby="cta-title">
+  <h2 id="cta-title">Es momento de que su marca tenga rostro.</h2>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#contacto" data-open-tab="negocio">Solicitar talento</a>
+    <a class="btn btn-ghost" href="#contacto" data-open-tab="talento">Postularme como talento</a>
+    <a class="btn btn-ghost" href="#contacto" data-wa>Escribir por WhatsApp</a>
+  </div>
+</section>
+
+<!-- 10. CONTACTO / FORMULARIOS -->
+<section class="section section-form" id="contacto" aria-labelledby="form-title">
+  <h2 id="form-title" class="section-title">Empecemos.</h2>
+
+  <div class="tabs" role="tablist" aria-label="Tipo de contacto">
+    <button role="tab" id="tab-talento" aria-controls="panel-talento" aria-selected="true" data-tab="talento">Soy talento</button>
+    <button role="tab" id="tab-negocio" aria-controls="panel-negocio" aria-selected="false" data-tab="negocio" tabindex="-1">Tengo un negocio</button>
+  </div>
+
+  <!-- Talento -->
+  <form class="form" id="panel-talento" role="tabpanel" aria-labelledby="tab-talento" data-tipo="talento" novalidate>
+    <label>Nombre completo
+      <input name="nombre" type="text" autocomplete="name" required maxlength="80">
+    </label>
+    <label>WhatsApp
+      <input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="Ej. +591 7XXXXXXX">
+    </label>
+    <label>Instagram
+      <input name="instagram" type="text" required maxlength="40" placeholder="@tuusuario">
+    </label>
+    <label>Otras redes <span class="opt">(opcional)</span>
+      <input name="otras_redes" type="text" maxlength="120" placeholder="TikTok, YouTube…">
+    </label>
+    <label>Ciudad y país
+      <input name="ciudad" type="text" required maxlength="80" placeholder="Ej. Lima, Perú">
+    </label>
+    <label class="check"><input type="checkbox" name="mayor_18" required> Tengo 18 años o más.</label>
+    <label class="check"><input type="checkbox" name="consentimiento" required> Acepto que Latido use mis datos para contactarme, según el <a href="#privacidad" class="open-privacy">aviso de privacidad</a>.</label>
+    <input class="trap" type="text" name="sitio_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-primary" type="submit">Enviar postulación</button>
+    <p class="form-msg" role="status" aria-live="polite"></p>
+  </form>
+
+  <!-- Negocio -->
+  <form class="form" id="panel-negocio" role="tabpanel" aria-labelledby="tab-negocio" data-tipo="negocio" hidden novalidate>
+    <label>Nombre del negocio
+      <input name="negocio" type="text" required maxlength="80">
+    </label>
+    <label>Su nombre
+      <input name="nombre" type="text" autocomplete="name" required maxlength="80">
+    </label>
+    <label>WhatsApp
+      <input name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="20" placeholder="Ej. +591 7XXXXXXX">
+    </label>
+    <label>Instagram o web del negocio <span class="opt">(opcional)</span>
+      <input name="web" type="text" maxlength="120">
+    </label>
+    <label>Qué necesita
+      <select name="necesita" required>
+        <option value="">Elija una opción</option>
+        <option>Live de ventas</option>
+        <option>Presencia en vivo</option>
+        <option>Sesión de fotos</option>
+        <option>Modelaje de prendas</option>
+        <option>Otro</option>
+      </select>
+    </label>
+    <label class="check"><input type="checkbox" name="consentimiento" required> Acepto que Latido use mis datos para contactarme, según el <a href="#privacidad" class="open-privacy">aviso de privacidad</a>.</label>
+    <input class="trap" type="text" name="sitio_web" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn btn-primary" type="submit">Enviar solicitud</button>
+    <p class="form-msg" role="status" aria-live="polite"></p>
+  </form>
+</section>
+
+</main>
+
+<footer class="footer">
+  <span class="brand"><span class="brand-dot" aria-hidden="true"></span>Latido</span>
+  <p>Latido Agency</p>
+  <button class="link-btn open-privacy" type="button">Aviso de privacidad</button>
+</footer>
+
+<div class="sticky-bar" id="sticky">
+  <a class="btn btn-primary" href="#contacto" data-open-tab="talento">Soy talento</a>
+  <a class="btn btn-ghost" href="#contacto" data-open-tab="negocio">Tengo un negocio</a>
+</div>
+
+<dialog id="privacidad" aria-labelledby="priv-title">
+  <h2 id="priv-title">Aviso de privacidad</h2>
+  <p>[Borrador pendiente de revisión legal] Solo pedimos los datos necesarios para contactarle: nombre, WhatsApp y redes. No pedimos contraseñas ni datos sensibles. Usted puede pedir que borremos sus datos en cualquier momento.</p>
+  <button class="btn btn-primary" id="priv-close" type="button">Cerrar</button>
+</dialog>
+
+<dialog id="oferta" class="oferta" aria-labelledby="oferta-title">
+  <button class="x" id="oferta-x" type="button" aria-label="Cerrar">&times;</button>
+  <p class="kicker">Para negocios</p>
+  <h2 id="oferta-title">Primera consulta sin compromiso.</h2>
+  <p>Cuéntenos qué vende y qué necesita. Le proponemos el talento que va con su marca, antes de que usted decida.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="#contacto" data-wa>Escribir por WhatsApp</a>
+    <button class="btn btn-ghost" id="oferta-no" type="button">Ahora no</button>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ============ CONFIGURACIÓN ============
+     Pegue aquí la URL pública del Apps Script cuando exista (paso del formulario).
+     Mientras esté vacío, los formularios validan pero no envían. */
+  var ENDPOINT = "";
+  var MAX_ENVIOS_POR_HORA = 3;
+  /* Número de WhatsApp con código de país y sin signos (ej. 59170000000). Vacío = los botones llevan al formulario. */
+  var WHATSAPP = "59170000000"; /* SUPUESTO: número provisional */
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ============ LATIDO (ECG interactivo) ============
+     El ritmo sube cuando se mueve el cursor o se hace scroll, y vuelve a reposo. */
+  var canvas = document.getElementById("ecg");
+  var bpmEl = document.getElementById("bpm");
+  if (canvas) {
+    var ctx = canvas.getContext("2d");
+    var w = 0, h = 0, dpr = 1, ys = [];
+    var phase = 0, bpm = 72, targetBpm = 72, energy = 0, lastX = null, lastY = null;
+
+    function beat(t) { // t en 0..1 dentro de un latido; devuelve -1..1
+      function g(c, s, a) { return a * Math.exp(-Math.pow((t - c) / s, 2)); }
+      return g(.18, .035, .18) - g(.36, .008, .22) + g(.39, .010, 1) - g(.42, .010, .35) + g(.62, .06, .26);
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      w = canvas.clientWidth; h = canvas.clientHeight;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ys = new Array(Math.ceil(w)).fill(0);
+    }
+
+    function bump(amount) { energy = Math.min(1, energy + amount); }
+
+    function frame() {
+      energy *= 0.985;
+      targetBpm = 72 + energy * 78;
+      bpm += (targetBpm - bpm) * 0.05;
+      var speed = 2.2 + energy * 2.2;
+      var steps = Math.max(1, Math.round(speed));
+      for (var s = 0; s < steps; s++) {
+        phase += (bpm / 60) / 60 / steps * 0.9;
+        var t = phase % 1;
+        ys.push(beat(t));
+        ys.shift();
+      }
+      draw();
+      if (bpmEl) bpmEl.textContent = Math.round(bpm);
+      requestAnimationFrame(frame);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      var mid = h * 0.55, amp = h * (0.34 + energy * 0.12);
+      var grad = ctx.createLinearGradient(0, 0, w, 0);
+      grad.addColorStop(0, "rgba(255,91,79,0)");
+      grad.addColorStop(0.35, "rgba(255,91,79,.7)");
+      grad.addColorStop(1, "#FF5B4F");
+      ctx.lineWidth = 3; ctx.lineJoin = "round"; ctx.lineCap = "round";
+      ctx.strokeStyle = grad;
+      ctx.shadowColor = "rgba(255,91,79,.8)"; ctx.shadowBlur = 14 + energy * 14;
+      ctx.beginPath();
+      for (var i = 0; i < ys.length; i++) {
+        var x = i, y = mid - ys[i] * amp;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      ctx.fillStyle = "#0D0A0B";
+      ctx.beginPath(); ctx.arc(ys.length - 1, mid - ys[ys.length - 1] * amp, 4, 0, 6.283); ctx.fill();
+    }
+
+    resize();
+    window.addEventListener("resize", resize);
+
+    if (reduce) {
+      for (var k = 0; k < ys.length; k++) ys[k] = beat(((k / ys.length) * 3) % 1);
+      draw();
+    } else {
+      window.addEventListener("pointermove", function (e) {
+        if (lastX !== null) bump(Math.min(0.04, Math.hypot(e.clientX - lastX, e.clientY - lastY) / 2500));
+        lastX = e.clientX; lastY = e.clientY;
+      }, { passive: true });
+      window.addEventListener("scroll", function () { bump(0.02); }, { passive: true });
+      document.querySelectorAll(".btn, .nav-cta").forEach(function (b) {
+        b.addEventListener("pointerenter", function () { bump(0.5); });
+      });
+      requestAnimationFrame(frame);
+    }
+  }
+
+  /* ============ ACORDEÓN DE SERVICIOS (una abierta a la vez) ============ */
+  var items = document.querySelectorAll(".acc-item");
+  function setItem(it, open) {
+    it.classList.toggle("open", open);
+    it.querySelector(".acc-btn").setAttribute("aria-expanded", open);
+    it.querySelector(".acc-panel").inert = !open;
+  }
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { en.target.closest(".acc-item").classList.toggle("on", en.isIntersecting); });
+    }, { rootMargin: "-42% 0px -42% 0px" });
+    items.forEach(function (it) { io.observe(it.querySelector(".acc-btn")); });
+  }
+  items.forEach(function (it) {
+    it.querySelector(".acc-btn").addEventListener("click", function () {
+      var willOpen = !it.classList.contains("open");
+      items.forEach(function (o) { setItem(o, false); });
+      if (willOpen) setItem(it, true);
+    });
+  });
+
+  /* ============ TARJETAS DE TALENTO (inclinación con cursor) ============ */
+  var cards = document.querySelector(".cards");
+  if (cards && !reduce) {
+    var pcs = cards.querySelectorAll(".pcard");
+    cards.addEventListener("pointermove", function (e) {
+      var r = cards.getBoundingClientRect();
+      var px = (e.clientX - r.left) / r.width - 0.5;
+      var py = (e.clientY - r.top) / r.height - 0.5;
+      pcs.forEach(function (c, i) {
+        var d = (i + 1) * 9;
+        c.style.transform = "translate(" + px * d + "px," + py * d + "px) rotate(" + px * (i % 2 ? -6 : 6) + "deg)";
+      });
+    });
+    cards.addEventListener("pointerleave", function () {
+      pcs.forEach(function (c) { c.style.transform = ""; });
+    });
+  }
+
+  /* ============ WHATSAPP ============ */
+  document.querySelectorAll("[data-wa]").forEach(function (a) {
+    if (WHATSAPP) {
+      a.href = "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent("Hola, quisiera información sobre Latido Agency.");
+      a.target = "_blank"; a.rel = "noopener";
+    }
+  });
+
+  /* ============ BARRA FIJA MÓVIL (aparece tras la portada, se oculta en el formulario) ============ */
+  var sticky = document.getElementById("sticky");
+  if (sticky && "IntersectionObserver" in window) {
+    var hidden = { hero: true, form: false };
+    function updateSticky() { sticky.classList.toggle("visible", !hidden.hero && !hidden.form); }
+    new IntersectionObserver(function (e) { hidden.hero = e[0].isIntersecting; updateSticky(); }).observe(document.querySelector(".hero"));
+    new IntersectionObserver(function (e) { hidden.form = e[0].isIntersecting; updateSticky(); }).observe(document.getElementById("contacto"));
+  }
+
+  /* ============ PESTAÑAS ============ */
+  var tabs = document.querySelectorAll("[data-tab]");
+  function openTab(name, focus) {
+    tabs.forEach(function (t) {
+      var on = t.dataset.tab === name;
+      t.setAttribute("aria-selected", on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById("panel-" + t.dataset.tab).hidden = !on;
+      if (on && focus) t.focus({ preventScroll: true });
+    });
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener("click", function () { openTab(t.dataset.tab, false); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+        openTab(t.dataset.tab === "talento" ? "negocio" : "talento", true);
+      }
+    });
+  });
+  document.querySelectorAll("[data-open-tab]").forEach(function (a) {
+    a.addEventListener("click", function () { openTab(a.dataset.openTab, false); });
+  });
+
+  /* ============ AVISO DE PRIVACIDAD ============ */
+  var dlg = document.getElementById("privacidad");
+  document.querySelectorAll(".open-privacy").forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); if (dlg.showModal) dlg.showModal(); });
+  });
+  document.getElementById("priv-close").addEventListener("click", function () { dlg.close(); });
+
+  /* ============ OFERTA (una vez por sesión) ============ */
+  var oferta = document.getElementById("oferta");
+  if (oferta && oferta.showModal) {
+    var visto = false;
+    try { visto = sessionStorage.getItem("latido_oferta") === "1"; } catch (e) {}
+    function cerrarOferta() { if (oferta.open) oferta.close(); }
+    if (!visto) setTimeout(function () {
+      if (dlg.open) return;
+      try { sessionStorage.setItem("latido_oferta", "1"); } catch (e) {}
+      oferta.showModal();
+    }, 6000);
+    document.getElementById("oferta-x").addEventListener("click", cerrarOferta);
+    document.getElementById("oferta-no").addEventListener("click", cerrarOferta);
+    oferta.addEventListener("click", function (e) { if (e.target === oferta) cerrarOferta(); });
+    oferta.querySelector("[data-wa]").addEventListener("click", cerrarOferta);
+  }
+
+  /* ============ FORMULARIOS ============ */
+  function enviosRecientes() {
+    try {
+      var l = JSON.parse(localStorage.getItem("latido_envios") || "[]");
+      var hace1h = Date.now() - 3600000;
+      return l.filter(function (t) { return t > hace1h; });
+    } catch (e) { return []; }
+  }
+  function registrarEnvio() {
+    try {
+      var l = enviosRecientes(); l.push(Date.now());
+      localStorage.setItem("latido_envios", JSON.stringify(l));
+    } catch (e) {}
+  }
+
+  document.querySelectorAll(".form").forEach(function (form) {
+    var msg = form.querySelector(".form-msg");
+    function say(text, cls) { msg.textContent = text; msg.className = "form-msg " + (cls || ""); }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      say("");
+      var bad = null;
+      form.querySelectorAll("[required]").forEach(function (f) {
+        var ok = f.type === "checkbox" ? f.checked : f.value.trim() !== "";
+        f.classList.toggle("invalid", !ok);
+        if (!ok && !bad) bad = f;
+      });
+      if (bad) { say("Revise los campos marcados.", "err"); bad.focus(); return; }
+
+      if (form.elements.sitio_web.value) return; // campo trampa: bots
+      if (enviosRecientes().length >= MAX_ENVIOS_POR_HORA) {
+        say("Ya envió varias solicitudes. Intente de nuevo más tarde.", "err"); return;
+      }
+      if (!ENDPOINT) {
+        say("Formulario aún sin conectar: sus datos no se enviaron.", "err"); return;
+      }
+
+      var data = new FormData(form);
+      data.append("tipo", form.dataset.tipo);
+      /* Origen de la visita, para medir de dónde llegan las solicitudes */
+      var qs = new URLSearchParams(location.search);
+      ["utm_source", "utm_medium", "utm_campaign"].forEach(function (k) { data.append(k, qs.get(k) || ""); });
+      data.append("referrer", document.referrer || "");
+      data.append("fecha", new Date().toISOString());
+      data.delete("sitio_web");
+      var btn = form.querySelector("button[type=submit]");
+      btn.disabled = true; say("Enviando…");
+      fetch(ENDPOINT, { method: "POST", body: data })
+        .then(function () {
+          registrarEnvio(); form.reset();
+          say("Recibido. Le contactaremos por WhatsApp.", "ok");
+        })
+        .catch(function () { say("No se pudo enviar. Revise su conexión e intente de nuevo.", "err"); })
+        .finally(function () { btn.disabled = false; });
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
